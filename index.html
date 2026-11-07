@@ -1011,6 +1011,7 @@ function fit(){var mobile=innerWidth<=520,s;
 addEventListener('resize',fit);fit();
 var splashT;
 function start(){clearTimeout(splashT);S=INIT();applyTheme();stack=[];cur=null;closeSheet();$$('.screen').forEach(function(s){s.dataset.s='hidden'});tabbar.classList.add('off');
+ if(location.hash==='#home'){go('home','tab');return}
  go('splash','fade');splashT=setTimeout(function(){if(cur==='splash')go('welcome','fade')},1400)}
 start();
 })();
