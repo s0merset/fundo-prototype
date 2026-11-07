@@ -444,13 +444,13 @@ button.lrow:active{background:color-mix(in srgb,var(--ink) 6%,transparent)}
 .rv-top .brand{flex:1}
 .rv-top .brand-ic{width:26px;height:26px;background:#191C15}
 .rv-top .brand-ic svg g{stroke:var(--salmon)}
-.rv-top .brand{gap:9px}
-.rv-top .brand-w{color:inherit;font-size:33px;letter-spacing:-.05em}
-.rv-top .brand-ic{width:38px;height:38px;border-radius:11px}
-.rv-av{width:38px;height:38px;flex-shrink:0;border-radius:50%;border:0;background:#191C15;color:var(--salmon);font:700 13px var(--body);cursor:pointer;transition:transform .12s var(--ease-out)}
-.rv-ib{position:relative;width:38px;height:38px;flex-shrink:0;border-radius:50%;border:0;background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.65);display:grid;place-items:center;color:inherit;cursor:pointer;transition:transform .12s var(--ease-out)}
+.rv-top .brand{gap:10px}
+.rv-top .brand-w{color:inherit;font-size:40px;letter-spacing:-.055em}
+.rv-top .brand-ic{width:46px;height:46px;border-radius:13px}
+.rv-av{width:46px;height:46px;flex-shrink:0;border-radius:50%;border:0;background:#191C15;color:var(--salmon);font:700 16px var(--body);cursor:pointer;transition:transform .12s var(--ease-out)}
+.rv-ib{position:relative;width:46px;height:46px;flex-shrink:0;border-radius:50%;border:0;background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.65);display:grid;place-items:center;color:inherit;cursor:pointer;transition:transform .12s var(--ease-out)}
 .rv-av:active,.rv-ib:active{transform:scale(.94)}
-.rv-ib .dotb{top:7px;right:8px;border-color:var(--salmon)}
+.rv-ib .dotb{top:9px;right:10px;width:10px;height:10px;border-color:var(--salmon)}
 .rv-acct{display:flex;justify-content:center;margin-top:28px}
 .rv-acct span{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.65);font-size:13px;font-weight:600}
 .rv-acct i{width:7px;height:7px;border-radius:50%;background:var(--red)}
@@ -855,8 +855,8 @@ var homeIO=null;
 SC.home=function(){var act=active().sort(byDue),ds=nearDues(),recent=S.txs.slice(0,3),ini=S.profile.name.split(' ').map(function(w){return w[0]}).slice(0,2).join('').toUpperCase();
  return '<div class="scroll" id="home-scroll">'+
  '<section class="rv-hero" aria-label="'+(ds.length?'Payment due soon':'Regular savings')+'">'+
-  '<span class="rv-wm" aria-hidden="true">'+logo(250,'#191C15')+'</span><header class="rv-top"><div class="brand" role="img" aria-label="Fundo"><span class="brand-ic" aria-hidden="true">'+logo(22,'#191C15')+'</span><span class="brand-w" aria-hidden="true">fundo</span></div>'+
-  '<button class="rv-ib" data-a="search" aria-label="Search activity">'+ic('search',19)+'</button><button class="rv-ib" data-a="notif" aria-label="Notifications" aria-haspopup="dialog" aria-expanded="false">'+ic('bell',19)+(ds.length?'<span class="dotb"></span>':'')+'</button><button class="rv-av" data-a="tab" data-arg="profile" aria-label="Your profile">'+ini+'</button></header>'+
+  '<span class="rv-wm" aria-hidden="true">'+logo(250,'#191C15')+'</span><header class="rv-top"><div class="brand" role="img" aria-label="Fundo"><span class="brand-ic" aria-hidden="true">'+logo(27,'#191C15')+'</span><span class="brand-w" aria-hidden="true">fundo</span></div>'+
+  '<button class="rv-ib" data-a="search" aria-label="Search activity">'+ic('search',22,2)+'</button><button class="rv-ib" data-a="notif" aria-label="Notifications" aria-haspopup="dialog" aria-expanded="false">'+ic('bell',22,2)+(ds.length?'<span class="dotb"></span>':'')+'</button><button class="rv-av" data-a="tab" data-arg="profile" aria-label="Your profile">'+ini+'</button></header>'+
   homeHero()+
   '<nav class="rv-acts" aria-label="Quick actions"><button data-a="goPay"><span>'+ic('wallet',21)+'</span>Pay</button><button data-a="depSheet" data-arg="sav"><span>'+ic('plus',21)+'</span>Add money</button><button data-a="go" data-arg="loans"><span>'+ic('list',21)+'</span>Loans</button><button data-a="more"><span>'+ic('more',21,2.2)+'</span>More</button></nav>'+
  '</section><span id="home-anchor"></span>'+
