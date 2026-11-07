@@ -4,8 +4,8 @@
 <style>
 /* Layout: the device on a plain stage. Under 520px the app fills the screen like the real thing. */
 :root{
-  --salmon:#CDEB5B; --salmon2:#D7F07C; --salmon3:#E3F5A6; --coral:#4C6A0C; --blush:#EAF5C8; --cream:#F7FAEE;
-  --ink:#191C15; --sun:#FFD66B; --line:#E2E9D0; --muted:#5A6352; --card:#FFFFFF;
+  --salmon:#CDEB5B; --salmon2:#D7F07C; --salmon3:#E3F5A6; --coral:#4C6A0C; --blush:#EAF5C8; --cream:#FFFFFF;
+  --ink:#191C15; --sun:#FFD66B; --line:#E7EAE2; --muted:#5A6352; --card:#FFFFFF;
   --red:#E5484D; --blue:#3A7BD5; --teal:#1F9D84; --orange:#E5822F; --purple:#8A63D2; --pink:#D9578E; --indigo:#5560D8;
   --stage:#ECEFE3; --stage-ink:#191C15;
   --display:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Roboto,system-ui,sans-serif;
@@ -66,7 +66,7 @@ body.mobile .tabbar{padding-bottom:max(8px,env(safe-area-inset-bottom,0px))}
 .btn.salmon{background:var(--salmon);color:var(--ink)}
 .btn.ghost{background:transparent;border:1px solid currentColor;color:var(--ink)}
 .spin{width:18px;height:18px;border-radius:50%;border:2.5px solid currentColor;border-right-color:transparent;animation:spin .6s linear infinite;display:inline-block}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 2px rgba(25,28,21,.04)}
 .tile{flex-shrink:0;width:40px;height:40px;border-radius:12px;background:var(--blush);color:var(--coral);display:grid;place-items:center}
 .top{display:flex;align-items:center;gap:12px}
 .t28{font-size:22px;margin:0}
@@ -342,13 +342,27 @@ input[type=range].rng{-webkit-appearance:none;appearance:none;width:100%;height:
 
 /* in-app dark mode */
 .phone{--on:#191C15}
-.phone.dark{--cream:#11140E;--card:#1B1F17;--ink:#EEF3E3;--line:#2B3226;--muted:#A3AD98;--blush:#263019;--coral:#B9DE4C;color:var(--ink)}
-.phone.dark :is(.ldate,.ofeat,.hero,.splash,.wl,.ok,.btn.salmon,.elig,.st.s,.hubc.pri,.doc,[style*="background:var(--sun)"],[style*="background:var(--salmon)"]){--ink:#191C15;--cream:#F7FAEE;--blush:#EAF5C8;--muted:#4A5242;--coral:#4C6A0C;--card:#FFFFFF;--line:#E2E9D0;color:var(--ink)}
+.phone.dark{--cream:#0D100B;--card:#181C14;--ink:#EEF3E3;--line:#272E22;--muted:#9EA893;--blush:#232C17;--coral:#C2E063;color:var(--ink)}
+.phone.dark :is(.ldate,.splash,.wl,.ok,.btn.salmon,.st.s,.doc,[style*="background:var(--sun)"],[style*="background:var(--salmon)"]){--ink:#191C15;--cream:#F7FAEE;--blush:#EAF5C8;--muted:#4A5242;--coral:#4C6A0C;--card:#FFFFFF;--line:#E2E9D0;color:var(--ink)}
 .phone.dark[data-cur=splash] .sbar,.phone.dark[data-cur=welcome] .sbar,.phone.dark[data-cur=done] .sbar{color:var(--on)}
 .phone.dark .in::placeholder{color:#7E8873}
 .phone.dark .sw::before{background:#2F3829}
 .phone.dark .sw.on::before{background:#4C6A0C}
 .phone.dark .grab{background:#3A4232}
+.phone.dark :is(.hero,.elig,.hubc.pri){background:#222C0F;border:1px solid rgba(205,235,91,.18);color:var(--ink)}
+.phone.dark .hero .pill{background:rgba(205,235,91,.14);color:#D9F08A}
+.phone.dark .lhero .ha{color:#D9F08A}
+.phone.dark .hero .btn.dark{background:var(--salmon);color:#191C15}
+.phone.dark .hstrip{border-top-color:rgba(255,255,255,.12)}
+.phone.dark .hero .tr{background:rgba(255,255,255,.14)!important}
+.phone.dark .hero .tr i{background:var(--salmon)!important}
+.phone.dark .hubc.pri .tile{background:var(--salmon)!important;color:#191C15!important}
+.phone.dark .hubc.pri small{color:var(--muted)}
+.phone.dark .ofeat{background:#2C2810;color:var(--ink)}
+.phone.dark .ofeat.c-lime{background:#222C0F}.phone.dark .ofeat.c-mint{background:#102D27}.phone.dark .ofeat.c-lilac{background:#272140}.phone.dark .ofeat.c-sky{background:#14273A}
+.phone.dark .ofeat .btn{background:var(--salmon)!important;color:#191C15!important}
+.phone.dark .ofeat .oco>span{opacity:.75}
+.phone.dark :is(.card,.group){box-shadow:none}
 .phone.dark .file{border-color:#3A4232}
 .thm{width:44px;height:44px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;color:var(--ink);transition:transform .12s var(--ease-out)}
 .thm:active{transform:scale(.95)}
@@ -364,6 +378,10 @@ input[type=range].rng{-webkit-appearance:none;appearance:none;width:100%;height:
 .sh-img{display:block;width:calc(100% + 48px);margin:4px -24px 16px;height:160px;object-fit:cover}
 
 /* ---------- ledger: statement layout used by every tab ---------- */
+.brand{display:flex;align-items:center;gap:8px}
+.brand-ic{width:28px;height:28px;border-radius:8px;background:var(--salmon);display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(25,28,21,.08)}
+.brand-w{font:700 25px/1 var(--display);letter-spacing:-.045em;color:var(--ink)}
+.brand-co{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12.5px;font-weight:500;color:var(--muted)}
 .lhero .hl{margin:0;font-size:13px;font-weight:600;opacity:.72}
 .lhero .ha,.lamt{margin-top:6px;font:700 40px/1.05 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .lhero .hs{margin:8px 0 16px;font-size:14px;opacity:.75}
@@ -377,7 +395,7 @@ input[type=range].rng{-webkit-appearance:none;appearance:none;width:100%;height:
 .lsec{display:flex;align-items:baseline;justify-content:space-between;margin:26px 0 8px}
 .lsec h2{margin:0;font:600 15px var(--body)}
 .lsec button{border:0;background:none;padding:0;min-height:32px;font:600 14px var(--body);color:var(--coral);cursor:pointer}
-.group{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 14px;overflow:hidden}
+.group{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 14px;overflow:hidden;box-shadow:0 1px 2px rgba(25,28,21,.04)}
 .lrow{display:flex;align-items:center;gap:12px;width:calc(100% + 28px);min-height:62px;margin:0 -14px;padding:10px 14px;border:0;border-top:1px solid var(--line);background:none;text-align:left;color:var(--ink);font:inherit}
 .group>.lrow:first-child{border-top:0}
 button.lrow{cursor:pointer}
@@ -768,7 +786,7 @@ function balLoan(id){var l=LM(id),b=bal(id),p=Math.round(Math.max(0,(l.prin-b)/l
 var homeIO=null;
 SC.home=function(){var act=active().sort(byDue),ds=nearDues(),recent=S.txs.slice(0,3);
  return '<div class="scroll" id="home-scroll">'+
- '<header style="display:flex;align-items:center;justify-content:space-between"><div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600">'+cbadge(S.coop,22)+CO(S.coop).sh+'</div><div style="display:flex;gap:8px"><button class="thm" data-a="theme" aria-label="'+(S.dark?'Switch to light mode':'Switch to dark mode')+'">'+ic(S.dark?'sun':'moon',20)+'</button><button class="rb" data-a="notif" aria-label="Notifications" aria-haspopup="dialog" aria-expanded="false">'+ic('bell')+(ds.length?'<span class="dotb" style="top:11px;right:12px"></span>':'')+'</button></div></header>'+
+ '<header style="display:flex;align-items:center;justify-content:space-between"><div><div class="brand"><span class="brand-ic" aria-hidden="true">'+logo(18,'#191C15')+'</span><span class="brand-w">fundo</span></div><div class="brand-co">'+cbadge(S.coop,16)+CO(S.coop).sh+'</div></div><div style="display:flex;gap:8px"><button class="thm" data-a="theme" aria-label="'+(S.dark?'Switch to light mode':'Switch to dark mode')+'">'+ic(S.dark?'sun':'moon',20)+'</button><button class="rb" data-a="notif" aria-label="Notifications" aria-haspopup="dialog" aria-expanded="false">'+ic('bell')+(ds.length?'<span class="dotb" style="top:11px;right:12px"></span>':'')+'</button></div></header>'+
  '<section class="hero lhero" style="margin-top:18px" aria-label="'+(ds.length?'Payment due soon':'Regular savings')+'">'+homeHero()+'</section><span id="home-anchor"></span>'+
  (act.length?'<div class="lsec"><h2>Upcoming</h2></div><div class="group">'+act.map(upRow).join('')+'</div>':'')+
  '<div class="lsec"><h2>Balances</h2><button data-a="go" data-arg="loans">My loans</button></div><div class="group">'+
