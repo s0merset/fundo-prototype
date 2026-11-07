@@ -564,7 +564,7 @@ var CHECK='<svg class="draw" width="46" height="46" viewBox="0 0 24 24" fill="no
 
 /* ---------- state ---------- */
 var ORIG=98000;
-function prefDark(){return !!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}
+function prefDark(){return false} // light is the design; the phone's dark setting doesn't override it
 function applyTheme(){phone.classList.toggle('dark',S.dark);document.documentElement.dataset.theme=S.dark?'dark':'light';
  $$('[data-a=theme]').forEach(function(b){if(b.classList.contains('sw'))setSwitch(b,S.dark);else{b.innerHTML=ic(S.dark?'sun':'moon',20);b.setAttribute('aria-label',S.dark?'Switch to light mode':'Switch to dark mode')}})}
 var COOPS={
@@ -1248,7 +1248,6 @@ function fit(){var mobile=innerWidth<=520,s;
  if(mobile)s=Math.min(innerWidth/390,innerHeight/844);else s=Math.min(1,(innerHeight-90)/844,(innerWidth-80)/390);
  s=Math.max(.35,s);wrap.style.width=(390*s)+'px';wrap.style.height=(844*s)+'px';phone.style.transform='scale('+s+')';document.body.classList.toggle('mobile',mobile)}
 addEventListener('resize',fit);fit();
-if(window.matchMedia){var mqDark=matchMedia('(prefers-color-scheme: dark)'),onScheme=function(){S.dark=mqDark.matches;applyTheme()};if(mqDark.addEventListener)mqDark.addEventListener('change',onScheme);else if(mqDark.addListener)mqDark.addListener(onScheme)}
 var splashT;
 function start(){clearTimeout(splashT);S=INIT();applyTheme();stack=[];cur=null;closeSheet();$$('.screen').forEach(function(s){s.dataset.s='hidden'});tabbar.classList.add('off');
  go('splash','fade');splashT=setTimeout(function(){if(cur==='splash')go('welcome','fade')},1400)}
