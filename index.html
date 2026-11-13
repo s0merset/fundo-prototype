@@ -526,8 +526,12 @@ button.lrow:active{background:color-mix(in srgb,var(--ink) 6%,transparent)}
 .tab-pill::before{width:100%;height:100%;border-radius:99px;background:color-mix(in srgb,var(--ink) 8%,transparent)}
 .phone.dark :is(.tabbar,.sheet,.gpop){box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 24px 60px -20px rgba(0,0,0,.7)}
 /* home header: brand colour melts into the page, actions float on it */
-.rv-hero{border-radius:0;background:linear-gradient(180deg,var(--salmon) 0%,var(--salmon2) 45%,var(--cream) 100%)}
-.phone.dark .rv-hero{background:linear-gradient(180deg,#222C0F,var(--cream))}
+/* the gradient belongs to the scrolling page, not the header box, so it runs on behind the first cards and has no bottom edge */
+.rv-hero{border-radius:0;background:none}
+.scroll:has(.rv-hero){background:linear-gradient(180deg,var(--salmon) 0,var(--salmon2) 26%,color-mix(in srgb,var(--salmon3) 60%,var(--cream)) 58%,var(--cream) 100%) top/100% 680px no-repeat local}
+.phone.dark .rv-hero{background:none}
+.phone.dark .scroll:has(.rv-hero){background-image:linear-gradient(180deg,#222C0F 0,#161C0A 45%,var(--cream) 100%)}
+.rv-wm{-webkit-mask:linear-gradient(#000 25%,#0000 80%);mask:linear-gradient(#000 25%,#0000 80%)}
 .rv-bal{font-size:52px}
 .rv-acts span{background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,.06),0 6px 16px -8px rgba(0,0,0,.2)}
 .banner{border-radius:22px}
