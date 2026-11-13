@@ -1,16 +1,18 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Fundo Prototype</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500..800&family=Funnel+Sans:wght@400..700&display=swap">
 <style>
 /* Layout: the device on a plain stage. Under 520px the app fills the screen like the real thing. */
 :root{
-  --salmon:#CDEB5B; --salmon2:#D7F07C; --salmon3:#E3F5A6; --coral:#4C6A0C; --blush:#EAF5C8; --cream:#FFFFFF;
-  --ink:#191C15; --sun:#FFD66B; --line:#E7EAE2; --muted:#5A6352; --card:#FFFFFF;
+  --salmon:#CDEB5B; --salmon2:#D7F07C; --salmon3:#E3F5A6; --coral:#4C6A0C; --blush:#EAF5C8; --cream:#FAFBF5;
+  --ink:#191C15; --sun:#FFD66B; --line:#DFE4D6; --muted:#5A6352; --card:#FFFFFF;
   --surface:#F4F5F1;
   --red:#E5484D; --blue:#3A7BD5; --teal:#1F9D84; --orange:#E5822F; --purple:#8A63D2; --pink:#D9578E; --indigo:#5560D8;
   --stage:#ECEFE3; --stage-ink:#191C15;
-  --display:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Roboto,system-ui,sans-serif;
-  --body:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,system-ui,sans-serif;
+  --display:'Funnel Display',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Roboto,system-ui,sans-serif;
+  --body:'Funnel Sans',-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,system-ui,sans-serif;
   --ease-out:cubic-bezier(.23,1,.32,1); --ease-drawer:cubic-bezier(.32,.72,0,1);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--stage:#12150F;--stage-ink:#F7FAEE;color-scheme:dark}}
@@ -350,9 +352,9 @@ input[type=range].rng{-webkit-appearance:none;appearance:none;width:100%;height:
 .evl .ok{color:#2F7D3B;font-weight:700}.evl .krow>span{text-align:left;line-height:1.35;padding:8px 12px 8px 0}.evl .krow>span b{margin-bottom:2px;text-align:left}.evl .krow>b.ok{background:none!important;padding:0!important;color:#2F7D3B!important}.phone.dark .evl .krow>b.ok{color:#9FD86B!important}
 
 /* in-app dark mode */
-.phone{--on:#191C15}
-.phone.dark{--cream:#0D100B;--card:#181C14;--surface:#181C14;--ink:#EEF3E3;--line:#272E22;--muted:#9EA893;--blush:#232C17;--coral:#C2E063;color:var(--ink)}
-.phone.dark :is(.ldate,.splash,.wl,.ok,.btn.salmon,.st.s,.doc,[style*="background:var(--sun)"],[style*="background:var(--salmon)"]){--ink:#191C15;--cream:#F7FAEE;--blush:#EAF5C8;--muted:#4A5242;--coral:#4C6A0C;--card:#FFFFFF;--line:#E2E9D0;color:var(--ink)}
+.phone{--on:#191C15;--disc:#191C15;--disc-fg:#CDEB5B;--dot:radial-gradient(circle,color-mix(in srgb,var(--muted) 55%,transparent) 1px,#0000 1.4px)}
+.phone.dark{--cream:#0D100B;--card:#181C14;--surface:#181C14;--ink:#EEF3E3;--line:#272E22;--muted:#9EA893;--blush:#232C17;--coral:#C2E063;--disc:#CDEB5B;--disc-fg:#191C15;color:var(--ink)}
+.phone.dark :is(.ldate,.splash,.wl,.ok,.btn.salmon,.st.s,.doc,[style*="background:var(--sun)"],[style*="background:var(--salmon)"]){--ink:#191C15;--cream:#F7FAEE;--blush:#EAF5C8;--muted:#4A5242;--coral:#4C6A0C;--card:#FFFFFF;--line:#E2E9D0;--disc:#191C15;--disc-fg:#CDEB5B;color:var(--ink)}
 .phone.dark[data-cur=splash] .sbar,.phone.dark[data-cur=welcome] .sbar,.phone.dark[data-cur=done] .sbar{color:var(--on)}
 .phone.dark .in::placeholder{color:#7E8873}
 .phone.dark .sw::before{background:#2F3829}
@@ -420,13 +422,9 @@ button.lrow:active{background:color-mix(in srgb,var(--ink) 6%,transparent)}
 .lpay:active{transform:scale(.95)}
 .lwarn{color:var(--red);font-weight:600}
 /* tinted tiles (lists) and solid tiles (settings), like the platform's */
-.t-blue{background:color-mix(in srgb,var(--blue) 14%,var(--card))!important;color:var(--blue)!important}
-.t-teal{background:color-mix(in srgb,var(--teal) 14%,var(--card))!important;color:var(--teal)!important}
-.t-orange{background:color-mix(in srgb,var(--orange) 15%,var(--card))!important;color:var(--orange)!important}
-.t-sun{background:color-mix(in srgb,#E0A800 18%,var(--card))!important;color:#A87A00!important}
-.s-blue,.s-teal,.s-orange,.s-purple,.s-red,.s-pink,.s-indigo{color:#fff!important}
-.s-blue{background:var(--blue)!important}.s-teal{background:var(--teal)!important}.s-orange{background:var(--orange)!important}.s-purple{background:var(--purple)!important}.s-red{background:var(--red)!important}.s-pink{background:var(--pink)!important}.s-indigo{background:var(--indigo)!important}
-.s-lime{background:var(--salmon)!important;color:#191C15!important}
+.t-blue,.t-teal,.t-orange{background:var(--blush)!important;color:var(--coral)!important}
+.t-sun{background:var(--salmon)!important;color:#191C15!important}
+.s-blue,.s-teal,.s-orange,.s-purple,.s-red,.s-pink,.s-indigo,.s-lime{background:var(--disc)!important;color:var(--disc-fg)!important}
 .ldone{display:inline-flex;align-items:center;gap:4px;margin-top:3px;font-size:12px;font-weight:600;color:var(--coral)}
 .lbar{display:block;margin-top:7px;height:4px;border-radius:9px;background:var(--blush);overflow:hidden}
 .lbar i{display:block;height:100%;background:var(--coral);transform-origin:left}
@@ -445,7 +443,7 @@ button.lrow:active{background:color-mix(in srgb,var(--ink) 6%,transparent)}
 
 /* ---------- Revolut-style patterns: immersive balance header, round actions, widget cards ---------- */
 .phone[data-cur=home] .sbar{background:var(--salmon);color:#191C15}
-.rv-hero{position:relative;isolation:isolate;overflow:hidden;margin:-20px -24px 0;padding:16px 24px 26px;color:#191C15;border-radius:0 0 32px 32px;background:radial-gradient(120% 80% at 12% 0%,#E2F79A 0%,rgba(226,247,154,0) 55%),linear-gradient(180deg,#D2EE62 0%,#C4E34B 100%);box-shadow:inset 0 -1px 0 rgba(25,28,21,.06)}
+.rv-hero{position:relative;isolation:isolate;overflow:hidden;margin:-20px -24px 0;padding:16px 24px 26px;color:#191C15;border-radius:0 0 32px 32px;background:var(--salmon)}
 .rv-wm{position:absolute;right:-56px;bottom:-40px;z-index:-1;width:250px;height:250px;opacity:.07;pointer-events:none}
 .rv-wm g{stroke:#191C15}.rv-wm circle{fill:#191C15}
 .rv-top{display:flex;align-items:center;gap:10px}
@@ -502,7 +500,7 @@ button.lrow:active{background:color-mix(in srgb,var(--ink) 6%,transparent)}
 .rv-me .tags .l{background:var(--salmon);color:#191C15}
 /* dark: the header goes deep olive; lime moves to small accents */
 .phone.dark[data-cur=home] .sbar{background:#222C0F;color:var(--ink)}
-.phone.dark .rv-hero{background:radial-gradient(120% 80% at 12% 0%,rgba(205,235,91,.16) 0%,rgba(205,235,91,0) 55%),linear-gradient(180deg,#26310F 0%,#1C250B 100%);color:var(--ink);border:1px solid rgba(205,235,91,.14);border-top:0}
+.phone.dark .rv-hero{background:#222C0F;color:var(--ink)}
 .phone.dark .rv-wm{opacity:.09}.phone.dark .rv-wm g{stroke:var(--salmon)}.phone.dark .rv-wm circle{fill:var(--salmon)}
 .phone.dark .rv-bal{color:#D9F08A}
 .phone.dark .rv-av{background:var(--salmon);color:#191C15}
@@ -513,6 +511,82 @@ button.lrow:active{background:color-mix(in srgb,var(--ink) 6%,transparent)}
 .phone.dark .rv-cta button,.phone.dark .lmpay{background:var(--salmon);color:#191C15}
 .phone.dark .lmini{background:color-mix(in srgb,#222C0F 88%,transparent);color:var(--ink)}
 .phone.dark .wtile{box-shadow:none}
+
+/* ---------- passbook identity: flat lime, ink and paper. Ledger rules, perforated stubs, one stamp. No glass. ---------- */
+::selection{background:var(--salmon);color:#191C15}
+.phone{caret-color:var(--coral)}
+.h{font-weight:800;letter-spacing:-.025em}
+.lsec h2,.ghd h2,.opslbl,.apsec>h2{font:700 17px var(--display);letter-spacing:0}
+.brand-w,.rv-top .brand-w,.splash .wm{font-weight:800;letter-spacing:-.04em}
+.splash .wm{font-size:60px}
+.lamt,.rv-bal,.rv-me h1{font-weight:800;letter-spacing:-.035em}
+/* round terminals everywhere, like the mark */
+.btn{border-radius:99px}
+.btn.ghost{border-width:1.5px}
+.rb,.thm{border-radius:50%}
+.tile,.acts .qi{border-radius:50%!important}
+@media (hover:hover) and (pointer:fine){.btn:not(:disabled):hover,.lpay:hover,.lmpay:hover,.rv-cta button:hover{opacity:.86}}
+/* solid paper instead of blur */
+.tabbar,.sheet,.gpop,.lmini{-webkit-backdrop-filter:none;backdrop-filter:none}
+.tabbar{background:var(--cream);box-shadow:none}
+.sheet{background:var(--card);border-radius:28px;box-shadow:0 0 0 1px var(--line),0 24px 60px -20px rgba(0,0,0,.45)}
+.gpop{background:var(--card);box-shadow:0 0 0 1px var(--line),0 24px 48px -16px rgba(25,28,21,.35)}
+.lmini{background:var(--salmon);border-bottom:0}
+/* current tab: a lime lozenge slides behind the icon */
+.tab-pill{top:9px;height:30px}
+.tab-pill::before{width:54px;height:30px;border-radius:99px;background:var(--salmon)}
+.tab.on .ti{color:#191C15}
+.tbadge{background:var(--disc);color:var(--disc-fg);box-shadow:0 0 0 2px var(--cream)}
+/* home header: a flat lime stub torn along a perforation */
+.rv-hero{--n:7px;border-radius:0;padding-bottom:38px;background:var(--salmon);box-shadow:none;
+ -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - var(--n)) no-repeat,radial-gradient(circle var(--n) at 50% 100%,#0000 calc(100% - .5px),#000) bottom/22px var(--n) round no-repeat;
+ mask:linear-gradient(#000 0 0) top/100% calc(100% - var(--n)) no-repeat,radial-gradient(circle var(--n) at 50% 100%,#0000 calc(100% - .5px),#000) bottom/22px var(--n) round no-repeat}
+.rv-wm{opacity:.09}
+.rv-ib,.rv-acct span{background:none;box-shadow:inset 0 0 0 1.5px currentColor}
+.rv-acts span{background:#191C15;color:var(--salmon);box-shadow:none}
+.rv-acts button{font-weight:600}
+.rv-bal{font-size:56px}
+.rv-cta button{height:44px;padding:0 26px;font-size:15px;box-shadow:none}
+.rv-me .av{background:var(--disc);color:var(--disc-fg)}
+/* ledger lists: heading sits on an ink rule, entries are separated by dotted rules, no boxes */
+.group{background:none;border:0;border-radius:0;padding:0;overflow:visible}
+.lsec,.ghd{border-bottom:1.5px solid var(--ink)}
+.lsec{margin:28px 0 0;padding-bottom:4px}
+.ghd{min-height:0;padding:0 0 4px}
+.rv-w{margin-top:28px;border-radius:0}
+.lrow{width:calc(100% + 20px);margin:0 -10px;padding:0 10px;border-top:0;border-radius:12px;background:var(--dot) 0 0/6px 2px repeat-x content-box}
+.group>.lrow:first-child,.ghd+.lrow{background-image:none}
+#info>div{border-top:0!important;background:var(--dot) 0 0/6px 2px repeat-x}
+#info>div:first-child{background:none}
+.card,.wtile{background:var(--card);border:1px solid var(--line);border-radius:16px}
+.hero,.ofeat,.elig{border-radius:18px}
+/* due dates: ink and lime, red is kept for warnings */
+.ldate{border-radius:9px;box-shadow:0 0 0 1.5px #191C15}
+.ldate i{background:#191C15;color:#CDEB5B}
+.tr i{background:var(--coral)}
+/* offers: lime and ink only */
+.ofeat,.ofeat.c-mint,.ofeat.c-sky{background:var(--salmon);color:var(--on)}
+.ofeat.c-lime,.ofeat.c-lilac{background:#191C15;color:#F7FAEE}
+.ofeat.c-lime .btn,.ofeat.c-lilac .btn{background:var(--salmon);color:#191C15}
+/* the chosen option's icon flips to the ink disc */
+.opt.sel .tile,.pick.sel .tile{background:var(--disc);color:var(--disc-fg)}
+/* reminder banner: ink slab */
+.banner{background:#191C15;color:#F7FAEE;border-radius:20px;box-shadow:0 0 0 1px rgba(205,235,91,.18),0 14px 30px -14px rgba(25,28,21,.6)}
+.banner small,.banner .app{color:#B4BDA6}
+.banner .tile{background:var(--salmon)!important;color:#191C15!important}
+/* passbook entries: label ..... value */
+.rcp div,.rcp div+div,.calc .krow,.rvcard .krow,.doc .dr{border:0;background:var(--dot) 0 55%/6px 3px repeat-x}
+.rcp div>*,.calc .krow>*,.rvcard .krow>*{background:var(--card)}
+.doc .dr>*{background:#FFFEFA}
+:is(.rcp div,.calc .krow,.rvcard .krow,.doc .dr)>:first-child{padding-right:8px}
+:is(.rcp div,.calc .krow,.rvcard .krow,.doc .dr)>:last-child{padding-left:8px}
+/* receipt: perforated top and bottom */
+.rcp{--n:6px;border-radius:0;padding:calc(var(--n) + 6px) 16px;
+ -webkit-mask:linear-gradient(#000 0 0) center/100% calc(100% - 2*var(--n)) no-repeat,radial-gradient(circle var(--n) at 50% 0,#0000 calc(100% - .5px),#000) top/18px var(--n) round no-repeat,radial-gradient(circle var(--n) at 50% 100%,#0000 calc(100% - .5px),#000) bottom/18px var(--n) round no-repeat;
+ mask:linear-gradient(#000 0 0) center/100% calc(100% - 2*var(--n)) no-repeat,radial-gradient(circle var(--n) at 50% 0,#0000 calc(100% - .5px),#000) top/18px var(--n) round no-repeat,radial-gradient(circle var(--n) at 50% 100%,#0000 calc(100% - .5px),#000) bottom/18px var(--n) round no-repeat}
+/* the one flourish: the teller's stamp lands on a finished payment */
+.stamp{display:inline-block;margin-top:4px;padding:6px 12px 5px;border:2px solid currentColor;border-radius:8px;outline:1px solid currentColor;outline-offset:2px;font:800 14px/1 var(--display);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);transform:rotate(-6deg);animation:stamp .32s .6s var(--ease-out) both}
+@keyframes stamp{from{opacity:0;transform:rotate(-6deg) scale(1.7)}}
 
 /* reduced motion: keep fades, drop movement */
 @media (prefers-reduced-motion:reduce){
@@ -615,8 +689,8 @@ SC.splash=function(){return '<div class="lw">'+logo(80,'#191C15')+'<div class="w
 SC.welcome=function(){return ''+
  '<div style="position:absolute;inset:0;display:flex;flex-direction:column;padding:0 24px 36px">'+
  '<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:0 8px">'+
- '<div class="rise" style="--i:0;width:56px">'+logo(56,'#191C15')+'</div>'+
- '<h1 class="h rise" style="--i:1;margin:0;font-size:52px;line-height:1;letter-spacing:-.04em">fundo</h1>'+
+ '<div class="rise" style="--i:0;width:72px">'+logo(72,'#191C15')+'</div>'+
+ '<h1 class="h rise" style="--i:1;margin:0;font-size:84px;line-height:.9;letter-spacing:-.04em">fundo</h1>'+
  '<p class="rise" style="--i:2;margin:0;font-size:18px;font-weight:500;line-height:1.4;max-width:270px;opacity:.75">Your co-op records, always in your pocket.</p>'+
  '</div>'+
  '<div class="rise" style="--i:3"><button class="btn dark" data-a="go" data-arg="find" data-hint>Find your co-op</button><p style="margin:14px 8px 0;text-align:center;font-size:13.5px;line-height:1.4;opacity:.75">Not a member yet? Apply at your co-op\'s branch. Once they verify you, sign in here.</p></div></div>'};
@@ -957,7 +1031,7 @@ SC.early=function(){var b=bal(S.eid);if(S.early>b)S.early=b;if(S.early<1000&&b>=
 SC.done=function(){var l=S.last||{amount:0,title:'',ref:'',method:''};
  return ''+
  '<div style="position:absolute;inset:0;display:flex;flex-direction:column;padding:0 24px 32px"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;position:relative">'+
- '<div class="okc">'+CHECK+'</div><h1 class="h rise" style="--i:3;margin:14px 0 0;font-size:28px;line-height:1.15">'+(l.sched?'Payment scheduled':'Payment sent')+'</h1><div class="h rise" style="--i:4;font-size:36px;line-height:1.1" data-count="'+l.amount+'">'+fmt(0)+'</div></div>'+
+ '<div class="okc">'+CHECK+'</div><h1 class="h rise" style="--i:3;margin:14px 0 0;font-size:28px;line-height:1.15">'+(l.sched?'Payment scheduled':'Payment sent')+'</h1><div class="h rise" style="--i:4;font-size:36px;line-height:1.1" data-count="'+l.amount+'">'+fmt(0)+'</div><i class="stamp">'+(l.sched?'Scheduled':'Paid · '+dstr(TODAY,false))+'</i></div>'+
  '<div class="rcp rise" style="--i:5"><div><span>'+(l.sched?'For':'Paid for')+'</span><b>'+l.title+'</b></div>'+(l.sched?'<div><span>Charged on</span><b>'+l.sched+'</b></div>':'')+'<div><span>'+(l.sched?'From':'Paid with')+'</span><b>'+l.method+'</b></div><div><span>Reference</span><b>'+l.ref+'</b></div>'+(l.sched?'<div><span>Reminder</span><b>We\'ll notify you before we charge it</b></div>':'<div><span>Your co-op record</span><b id="sync" style="display:flex;align-items:center;gap:8px"><span class="spin" style="width:14px;height:14px;border-width:2px;color:var(--coral)"></span> Syncing</b></div>')+'</div>'+
  '<button class="btn dark rise" style="--i:6;margin-top:18px" data-a="finish" data-hint>Done</button></div>'};
 
